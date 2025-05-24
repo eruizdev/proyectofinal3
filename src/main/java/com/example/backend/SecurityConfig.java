@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig {
 
+	//Implementacion del Hasheado de passwords
+	
     // Bean para codificar (hashear) las contraseñas con BCrypt
     @Bean
     public PasswordEncoder passwordEncoder() {
