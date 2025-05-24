@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PasswordMigrator implements CommandLineRunner {
 
+	//Implementacion del Hasheado de passwords
+	
     private final AuthRepository repo;
     private final PasswordEncoder encoder;
 
