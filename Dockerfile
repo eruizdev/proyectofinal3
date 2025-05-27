@@ -1,14 +1,14 @@
-# Dockerfile
+# Etapa de runtime: imagen ligera con JDK 17
+FROM openjdk:17-jdk-slim AS runtime
 
-# Etapa de construcción
-FROM maven:3.8.3-openjdk-17 AS build
+# Carpeta de trabajo dentro del contenedor
 WORKDIR /app
-COPY . .
-RUN mvn clean package -DskipTests
 
-# Etapa de ejecución
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+# Copia sólo el JAR compilado
+COPY target/*.jar app.jar
+
+# Puerto que expone tu Spring Boot (ajústalo si usas otro)
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Comando de arranque
+ENTRYPOINT ["java","-jar","/app/app.jar"]
