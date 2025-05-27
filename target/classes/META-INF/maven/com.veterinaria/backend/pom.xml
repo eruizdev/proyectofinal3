@@ -10,7 +10,7 @@
   <packaging>jar</packaging>
 
   <name>Veterinaria Backend</name>
-  <description>Proyecto backend para veterinaria con Spring Boot y MariaDB</description>
+  <description>Proyecto backend para veterinaria con Spring Boot y MariaDB/Azure MySQL</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -24,7 +24,7 @@
   </properties>
 
   <dependencies>
-    <!-- Spring MVC + Tomcat embebido -->
+    <!-- Spring Web (MVC + Tomcat embebido) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -42,11 +42,19 @@
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-    <!-- MariaDB Connector -->
+    <!-- Conector MariaDB (para entorno local) -->
     <dependency>
       <groupId>org.mariadb.jdbc</groupId>
       <artifactId>mariadb-java-client</artifactId>
       <version>3.3.2</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Conector MySQL (para Azure MySQL) -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.32</version>
       <scope>runtime</scope>
     </dependency>
 
@@ -93,7 +101,7 @@
 
   <build>
     <plugins>
-      <!-- Plugin de Spring Boot para empaquetado y ejecución -->
+      <!-- Plugin de Spring Boot -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
